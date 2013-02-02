@@ -1,0 +1,25 @@
+body {padding: 10px 10px; font-family:Arial, sans-serif;}
+ul {list-style-type:none;}
+div.cb {display:inline-block; white-space:nowrap;
+	padding: 2px; padding-right: 5px;}
+div.spell-cb {
+	margin-right: 3px; margin-bottom: 3px;
+	border: solid; border-width: 1px;
+}
+.filter-group {margin-bottom:10px;}
+.spell-attack {background: #F58760;}
+.spell-conjuration {background: #CADCAE;}
+.spell-creature {background: #734A2E; color: white;}
+.spell-enchantment {background: #D47127;}
+.spell-quipment {background: #62677B; color: white;}
+.spell-incantation {background: #59499C; color: white;}
+#menu {width: 270px; margin-right:20px; float:left;}
+#content {float:left;}
+#spell-list-holder {position: relative; left: -30px;}
+#spell-img-holder {margin-left: 20px;}
+#page-mages-info {width:590}
+
+.nano { width: 270px; height: 500px; }
+.nano .content { }
+.nano .pane   { background: #888; }
+.nano .slider { background: #111; }

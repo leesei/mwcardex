@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!--
+		<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css">
+-->
+<!--
+		<script src="jquery-latest.js"></script>
+		<script src="jquery-ui.js"></script>
+		<link rel="stylesheet" href="jquery-ui.css">
+-->
+		<script src="jquery.nanoscroller.min.js"></script>
+		<link rel="stylesheet" href="nanoscroller.css">
+		<link rel="stylesheet" href="mycss.css">
+
+		<title>MW Cardex</title>
+	</head>
+
+	<body>
+		<div id="menu">
+			<fieldset class="filter-group">
+				<legend>Name</legend>
+				<input type="search" incremental id="name-filter" name="name-filter" placeholder="Filter by name" />
+			</fieldset>
+
+			<fieldset class="filter-group">
+				<legend>Attribute</legend>
+				<input type="search" id="attr-filter" name="attr-filter" placeholder="Filter by attributes" disabled />
+			</fieldset>
+
+			<fieldset id="school-filters" class="filter-group">
+				<legend>Schools</legend>
+				<div class="primary-schools">
+					<div class="arcane cb">
+						<input type="checkbox" id="school-filter-arcane" value="arcane" />
+						<label for="school-filter-arcane">Arcane</label>
+					</div>
+					<div class="dark cb">
+						<input type="checkbox" id="school-filter-dark" value="dark" />
+						<label for="school-filter-dark">Dark</label>
+					</div>
+					<div class="holy cb">
+						<input type="checkbox" id="school-filter-holy" value="holy" />
+						<label for="school-filter-holy">Holy</label>
+					</div>
+					<div class="mind cb">
+						<input type="checkbox" id="school-filter-mind" value="mind" />
+						<label for="school-filter-mind">Mind</label>
+					</div>
+					<div class="nature cb">
+						<input type="checkbox" id="school-filter-dark" value="nature" />
+						<label for="school-filter-nature">Nature</label>
+					</div>
+					<div class="war cb">
+						<input type="checkbox" id="school-filter-war" value="war" />
+						<label for="school-filter-war">War</label>
+					</div>
+				</div>
+				<div class="elemental-schools">
+					<div class="air cb">
+						<input type="checkbox" id="school-filter-air" value="air" />
+						<label for="school-filter-air">Air</label>
+					</div>
+					<div class="earth cb">
+						<input type="checkbox" id="school-filter-earth" value="earth" />
+						<label for="school-filter-earth">Earth</label>
+					</div>
+					<div class="fire cb">
+						<input type="checkbox" id="school-filter-fire" value="fire" />
+						<label for="school-filter-fire">Fire</label>
+					</div>
+					<div class="water cb">
+						<input type="checkbox" id="school-filter-water" value="water" />
+						<label for="school-filter-water">Water</label>
+					</div>
+				</div>
+				<div>
+					<input type="button" id="school-filter-all" value="All" />
+					<input type="button" id="school-filter-none" value="None" />
+				</div>
+			</fieldset>
+
+			<fieldset id="type-filters" class="filter-group">
+				<legend>Spell Types</legend>
+				<div class="spell-attack cb spell-cb">
+					<input type="checkbox" id="type-filter-attack" value="a" />
+					<label for="type-filter-attack">Attack</label>
+				</div>
+				<div class="spell-conjuration cb spell-cb">
+					<input type="checkbox" id="type-filter-conjuration" value="j" />
+					<label for="type-filter-conjuration">Conjuration</label>
+				</div>
+				<div class="spell-creature cb spell-cb">
+					<input type="checkbox" id="type-filter-creature" value="c" />
+					<label for="type-filter-creature">Creature</label>
+				</div>
+				<div class="spell-enchantment cb spell-cb">
+					<input type="checkbox" id="type-filter-enchantment" value="e" />
+					<label for="type-filter-enchantment">Enchantment</label>
+				</div>
+				<div class="spell-equipment cb spell-cb">
+					<input type="checkbox" id="type-filter-equipment" value="q" />
+					<label for="type-filter-equipment">Equipment</label>
+				</div>
+				<div class="spell-incantation cb spell-cb">
+					<input type="checkbox" id="type-filter-incantation" value="i" />
+					<label for="type-filter-incantation">Incantation</label>
+				</div>
+				<div>
+					<input type="button" id="type-filter-all" value="All" />
+					<input type="button" id="type-filter-none" value="None" />
+				</div>
+			</fieldset>
+
+			<div>
+				<input type=button value="Mages info"
+				onclick="javascript:$('#page-spell-list').hide(); $('#page-mages-info').show();">
+			</div>
+		</div>
+
+		<div id="content">
+			<div data-role="page" id="page-spell-list">
+				<div style="float:left;" class="nano">
+					<div" class="content">
+						<ul id="spell-list-holder"></ul>
+					</div>
+				<div style="float:left;">
+					<img src="" id="spell-img-holder" />
+				</div>
+			</div>
+
+			<div data-role="page" id="page-mages-info">
+				<input type="radio" name="mage-info" id="mage-info-beastmaster" value="Beastmaster" />
+				<label for="mage-info-beastmaster" >Beastmaster</label>
+				<input type="radio" name="mage-info" id="mage-info-priestess" value="Priestess" />
+				<label for="mage-info-priestess">Priestess</label>
+				<input type="radio" name="mage-info" id="mage-info-warlock" value="Warlock" />
+				<label for="mage-info-warlock">Warlock</label>
+				<input type="radio" name="mage-info" id="mage-info-wizard" value="Wizard" />
+				<label for="mage-info-wizard">Wizard</label>
+				<a href="javascript:$('#page-mages-info').hide(); $('#page-spell-list').show();" style="float:right;">Close</a>
+				<br>
+				<div id="mage-info-holder"></div>
+			</div>
+		</div>
+	</body>
+
+	<script src="spell_database.min.js"></script>
+	<script src="sprintf-0.7-beta1.min.js"></script>
+	<script src="mwcardex.min.js"></script>
+</html>
