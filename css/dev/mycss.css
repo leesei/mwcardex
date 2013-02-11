@@ -1,0 +1,136 @@
+body {
+  padding: 0.8em;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+}
+input[type="text"], input[type="button"] {
+  font-family: Arial, sans-serif;
+  font-size: 0.95em;
+}
+input[type="text"] {
+  padding: 0.2em 0.5em;
+}
+.font-L2 {
+  /* level 2 font */
+  font-size: 0.9em;
+}
+.expander {
+  /* extents height of container with all children being float */
+  content: ".";
+  display: block;
+  float: none;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.badge-icon {
+  width: 2em;
+  height: 2em;
+}
+.hidden {
+  /* for hiding filtered spells */
+  display: none;
+}
+#page-filter-menu,
+#page-spell-list,
+#page-spell-img {
+  width: 300px;
+  margin-right: 1.5em;
+  margin-bottom: 0.8em;
+  float: left;
+}
+#page-mages-info {
+  float: left;
+}
+.filter-group {
+  margin-bottom: 0.8em;
+}
+.primary-schools-1,
+.primary-schools-2,
+.elemental-schools {
+  width: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  box-align: start;
+
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  box-pack: justify;
+}
+.primary-schools-1>label,
+.primary-schools-2>label,
+.elemental-schools>label {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+}
+#type-filters label {
+  margin: 0.3em;
+  margin-right: 0.5em;
+  padding: 0.2em;
+  padding-right: 0.5em;
+  border: solid;
+  border-width: 0.1em;
+  display: inline-block;
+  white-space: nowrap;
+}
+.type-a {
+  background-color: #e89643;
+}
+.type-a:hover {
+  background-color: #fad8ac;
+}
+.type-j {
+  background-color: #d0deb0;
+}
+.type-j:hover {
+  background-color: #eaf7ca;
+}
+.type-c {
+  background-color: #c19357;
+}
+.type-c:hover {
+  background-color: #e6c290;
+}
+.type-e {
+  background-color: #e4d276;
+}
+.type-e:hover {
+  background-color: #fef4a6;
+}
+.type-q {
+  background-color: #dedacd;
+}
+.type-q:hover {
+  background-color: #fbf6e8;
+}
+.type-i {
+  background-color: #c99db8;
+}
+.type-i:hover {
+  background-color: #f5cae4;
+}
+#spell-list-holder {
+  /* override ul defaults */
+  padding-left: 0;
+  margin: 0 0;
+
+  max-height: 500px;
+  overflow-y: auto;
+}
+#spell-list-holder>li {
+  padding: 0.3em;
+  list-style-type: none;
+  clear: both;
+  border-top-style: solid;
+  border-width: 0.1em;
+  border-color: #ffffff;
+}
+#spell-list-holder>li>a {
+  color: inherit;
+  text-decoration: none;
+}
