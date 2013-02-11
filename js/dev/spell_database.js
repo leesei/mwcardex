@@ -1373,7 +1373,7 @@ var gSpellDB =
     "schools": {
       "air": 1
     }, 
-    "type": "c"
+    "type": "j"
   }, 
   "mw1w02": {
     "cost": 7, 
@@ -1381,7 +1381,7 @@ var gSpellDB =
     "schools": {
       "earth": 2
     }, 
-    "type": "c"
+    "type": "j"
   }, 
   "mw1w03": {
     "cost": 7, 
@@ -1389,7 +1389,7 @@ var gSpellDB =
     "schools": {
       "fire": 2
     }, 
-    "type": "c"
+    "type": "j"
   }, 
   "mw1w04": {
     "cost": 5, 
@@ -1397,6 +1397,6 @@ var gSpellDB =
     "schools": {
       "nature": 1
     }, 
-    "type": "c"
+    "type": "j"
   }
 };
