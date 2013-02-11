@@ -1,16 +1,14 @@
 CACHE MANIFEST
-# v2 - 2012-02-13
+# v2.1 - 2012-02-12
 
 # js
 js/jquery.min.js
-js/jquery.nanoscroller.min.js
 js/mwcardex.min.js
 js/spell_database.min.js
 js/sprintf-0.7-beta1.min.js
 
 # css
 css/mycss.min.css
-css/nanoscroller.min.css
 
 # images
 images/air.png

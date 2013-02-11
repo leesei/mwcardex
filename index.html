@@ -22,21 +22,14 @@
 			!window.jQuery && document.write(unescape('%3Cscript src="js/jquery.min.js"%3E%3C/script%3E'))
 		</script>
 
-		<!-- must load before page loads -->
-		<script src="js/jquery.nanoscroller.min.js"></script>
-		<link rel="stylesheet" href="css/nanoscroller.min.css">
-
-<!-- release
--->
 		<link rel="stylesheet" href="css/mycss.min.css">
-
-<!-- development
+<!--
 		<link rel="stylesheet" href="css/dev/mycss.css">
 -->
 	</head>
 
 	<body>
-		<div id="filter-menu">
+		<div id="page-filter-menu">
 			<fieldset class="filter-group">
 				<legend>Name</legend>
 				<input type="text" id="name-filter" placeholder="Filter by name">
@@ -45,7 +38,7 @@
 
 			<fieldset class="filter-group" disabled>
 				<legend>Tags</legend>
-				<input type="search" id="tag-filter" placeholder="Filter by tags">
+				<input type="text" id="tag-filter" placeholder="Filter by tags">
 				<input type="button" value="Clear">
 			</fieldset>
 
@@ -95,25 +88,31 @@
 
 			<fieldset id="type-filters" class="filter-group">
 				<legend>Spell Types</legend>
-				<label class="type-a">
-					<input type="checkbox" value="a">Attack
-				</label>
-				<label class="type-j">
-					<input type="checkbox" value="j">Conjuration
-				</label>
-				<label class="type-c">
-					<input type="checkbox" value="c">Creature
-				</label>
-				<label class="type-e">
-					<input type="checkbox" value="e">Enchantment
-				</label>
-				<label class="type-q">
-					<input type="checkbox" value="q">Equipment
-				</label>
-				<label class="type-i">
-					<input type="checkbox" value="i">Incantation
-				</label>
-				<div>
+				<div class="row">
+					<label class="type-a">
+						<input type="checkbox" value="a">Attack
+					</label>
+					<label class="type-j">
+						<input type="checkbox" value="j">Conjuration
+					</label>
+				</div>
+				<div class="row">
+					<label class="type-c">
+						<input type="checkbox" value="c">Creature
+					</label>
+					<label class="type-e">
+						<input type="checkbox" value="e">Enchantment
+					</label>
+				</div>
+				<div class="row">
+					<label class="type-q">
+						<input type="checkbox" value="q">Equipment
+					</label>
+					<label class="type-i">
+						<input type="checkbox" value="i">Incantation
+					</label>
+				</div>
+				<div class="row">
 					<input type="button" id="type-filter-all" value="All">
 					<input type="button" id="type-filter-none" value="None">
 				</div>
@@ -121,39 +120,36 @@
 
 			<div>
 				<input type=button value="Mages info"
-				onclick="javascript:$('#page-spell-list').hide(); $('#page-mages-info').show();">
+				onclick="javascript:$('#page-spell-list, #page-spell-img').hide(); $('#page-mages-info').show();">
+			</div>
+			<div class="font-L2" style="padding: 10px;">
+				Mage Wars Cardex by leesei<br>
+				v2.1 20130212
 			</div>
 		</div>
 
-		<div id="content">
-			<div data-role="page" id="page-spell-list">
-				<div style="float:left;" >
-					<div>
-						Showing <span id="visible-spell-count"></span> spell(s).
-					</div>
-					<div class="nano">
-						<div class="content">
-							<ul id="spell-list-holder"></ul>
-						</div>
-					</div>
-				</div>
-				<div style="float:left;">
-					<img src="" id="spell-img-holder">
-				</div>
+		<div data-role="page" id="page-spell-list">
+			<div class="font-L2">
+				Showing <span id="visible-spell-count"></span> spell(s).
 			</div>
+			<ul id="spell-list-holder"></ul>
+		</div>
 
-			<div data-role="page" id="page-mages-info" hidden>
-				<select id="mage-select">
-					<option selected disabled>-- Select mage --</option>
-					<option>Beastmaster</option>
-					<option>Priestess</option>
-					<option>Warlock</option>
-					<option>Wizard</option>
-				</select>
-				<a href="javascript:$('#page-mages-info').hide(); $('#page-spell-list').show();" style="float:right;">Close</a>
+		<div data-role="page" id="page-spell-img">
+			<img src="#" id="spell-img-holder" width="293px" height="400px">
+		</div>
 
-				<div id="mage-info-holder"></div>
-			</div>
+		<div data-role="page" id="page-mages-info" hidden>
+			<select id="mage-select">
+				<option selected disabled>-- Select mage --</option>
+				<option>Beastmaster</option>
+				<option>Priestess</option>
+				<option>Warlock</option>
+				<option>Wizard</option>
+			</select>
+			<a href="javascript:$('#page-mages-info').hide(); $('#page-spell-list, #page-spell-img').show();" style="margin-left:20px;">Close</a>
+
+			<div id="mage-info-holder"></div>
 		</div>
 
 		<div class="expander"></div>
