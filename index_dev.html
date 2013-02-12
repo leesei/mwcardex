@@ -29,20 +29,20 @@
 	</head>
 
 	<body>
-		<div id="page-filter-menu">
-			<fieldset class="filter-group">
+		<div data-role="page" id="page-filter-menu">
+			<fieldset>
 				<legend>Name</legend>
 				<input type="text" id="name-filter" placeholder="Filter by name">
 				<input type="button" value="Clear">
 			</fieldset>
 
-			<fieldset class="filter-group" disabled>
+			<fieldset disabled>
 				<legend>Tags</legend>
 				<input type="text" id="tag-filter" placeholder="Filter by tags">
 				<input type="button" value="Clear">
 			</fieldset>
 
-			<fieldset id="school-filters" class="filter-group">
+			<fieldset id="school-filters">
 				<legend>Schools</legend>
 				<div class="primary-schools-1">
 					<label class="school-arcane">
@@ -86,7 +86,7 @@
 				</div>
 			</fieldset>
 
-			<fieldset id="type-filters" class="filter-group">
+			<fieldset id="type-filters">
 				<legend>Spell Types</legend>
 				<div class="row">
 					<label class="type-a">

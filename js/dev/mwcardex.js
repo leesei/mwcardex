@@ -1,3 +1,6 @@
+/*global gSpellDB sprintf*/
+"use strict";
+
 var
 DEV = 1, // master switch for debug logs
 LOG_LEVEL_DEBUG = 1,
@@ -17,36 +20,30 @@ FADE_MS_LONG = 300,  // for image, div fading in
 FADE_MS_SHORT = 200;  // for spell list, div fading out
 
 function dumpSpellDBEntry(id) {
-	if (!LOG_LEVEL_DEBUG)
+	if (!LOG_LEVEL_DEBUG) {
 		return;
+	}
 
 	var entry = gSpellDB[id];
 	console.debug('"%s": [%s] type[%s] sch[%s] cost[%d]', id, entry.name, entry.type, entry.schools, entry.cost);
 }
 
-$(document).ready(function() {
-	// any code goes here
-	dev_init();
-	monitorAppCacheUpdate();
-	init();
-});
-
 function dev_init() {
 	// init our development environment
 	var i, names,
-	nullFunc = function() {};
+	nullFunc = function() {
+	};
 
 	/*
-	 snippet adopted from:
-	   http://stackoverflow.com/questions/217957/how-to-print-debug-messages-in-the-google-chrome-javascript-console
+	snippet adopted from:
+		http://stackoverflow.com/questions/217957/how-to-print-debug-messages-in-the-google-chrome-javascript-console
 	 */
 	// create a noop console object if the browser doesn't provide one ...
-	if (!window.console){
+	if (!window.console) {
 		window.console = {};
-	}
-	// IE has a console that has a 'log' function but no 'debug'. to make console.debug work in IE,
-	// we just map the function. (extend for info etc if needed)
-	else {
+	} else {
+		// IE has a console that has a 'log' function but no 'debug'. to make console.debug work in IE,
+		// we just map the function. (extend for info etc if needed)
 		if (!window.console.debug && typeof window.console.log !== 'undefined') {
 			window.console.debug = window.console.log;
 		}
@@ -96,7 +93,7 @@ function dev_init() {
 function monitorAppCacheUpdate() {
 	console.group('monitorAppCacheUpdate()');
 
-	var cacheStatusValues = [], logEvent;
+	var cacheStatusValues = [], logEvent, cache;
 
 	cacheStatusValues[0] = 'uncached';
 	cacheStatusValues[1] = 'idle';
@@ -105,22 +102,22 @@ function monitorAppCacheUpdate() {
 	cacheStatusValues[4] = 'updateready';
 	cacheStatusValues[5] = 'obsolete';
 
-	logEvent = function (e) {
+	logEvent = function(e) {
 		var online, status, type, message;
 		online = (navigator.onLine) ? 'yes' : 'no';
 		status = cacheStatusValues[cache.status];
 		type = e.type;
 		message = 'online: ' + online;
-		message+= ', event: ' + type;
-		message+= ', status: ' + status;
+		message += ', event: ' + type;
+		message += ', status: ' + status;
 		if (type == 'error' && navigator.onLine) {
-			message+= ' (prolly a syntax error in manifest)';
+			message += ' (prolly a syntax error in manifest)';
 		}
 		console.log(message);
-	}
+	};
 
 
-	var cache = window.applicationCache;
+	cache = window.applicationCache;
 	cache.addEventListener('cached', logEvent, false);
 	cache.addEventListener('checking', logEvent, false);
 	cache.addEventListener('downloading', logEvent, false);
@@ -131,7 +128,7 @@ function monitorAppCacheUpdate() {
 	cache.addEventListener('updateready', logEvent, false);
 	cache.addEventListener(
 		'updateready',
-		function(){
+		function() {
 			window.applicationCache.swapCache();
 			console.log('swap cache has been called');
 			window.location.reload();
@@ -164,9 +161,8 @@ function init() {
 		});
 
 	// search fields
-	  // search and incremental only works on Webkit, what a pity
-	  // use simple timer instead
-	  // FF need press enter
+		// search and incremental only works on Webkit, what a pity
+		// use simple timer instead
 	$('#name-filter, #tag-filter')
 		.on('change', function() {
 			filterSpells(this);
@@ -232,7 +228,7 @@ function mageInfoInit() {
 
 	// initialize mage select menu
 	$('#mage-select')
-		.on('change', function(){
+		.on('change', function() {
 			console.debug('render mage[%s] info', this.value);
 			$('#mage-info-holder').html(
 				'<img src="mages/'+this.value+'_1.jpg" /> '+
@@ -266,7 +262,7 @@ function spellListInit() {
 			.append($badges)
 			// to make li bound the badges (which is floating)
 			.append($('<div>').addClass('expander'))
-			.on('click', function (evt) {
+			.on('click', function(evt) {
 				console.verbose('> spell %s clicked', id);
 				evt.preventDefault();
 				// only reload if the spell already shown is different
@@ -291,12 +287,12 @@ function spellListInit() {
 	// sort spell list
 	$spells.sort(function($e1, $e2) {
 		var str1 = $e1.text(), str2 = $e2.text();
-	    if (str1 == str2)
-	        return 0;
-	    if (str1 > str2)
-	        return 1;
-	    if (str1 < str2)
-	        return -1;
+		if (str1 == str2)
+			return 0;
+		if (str1 > str2)
+			return 1;
+		if (str1 < str2)
+			return -1;
 	});
 	$('#spell-list-holder').append($spells);
 
@@ -346,7 +342,7 @@ function filterSpells(input_ele) {
 	console.time('school-filter');
 	if (!quit) {
 		length = $sfchecked.length;
-		if (length == 0) {
+		if (length === 0) {
 			console.info('> [school] none selected, quit');
 			$spells.addClass('hidden');
 			quit = true;
@@ -383,7 +379,7 @@ function filterSpells(input_ele) {
 	console.time('type-filter');
 	if (!quit) {
 		length = $tfchecked.length;
-		if (length == 0) {
+		if (length === 0) {
 			console.info('> [type] none selected, quit');
 			$spells.addClass('hidden');
 			quit = true;
@@ -465,3 +461,10 @@ function filterSpells(input_ele) {
 
 	console.groupEnd();
 }
+
+$(document).ready(function() {
+	// any code goes here
+	dev_init();
+	monitorAppCacheUpdate();
+	init();
+});
