@@ -1,21 +1,26 @@
-body {
-  padding: 0.8em;
+@import "vendor_prefixes.less";
+
+.font-base {
   font-family: Arial, sans-serif;
-  font-size: 1em;
-}
-input[type="text"], input[type="button"] {
-  font-family: Arial, sans-serif;
-  font-size: 0.95em;
-}
-input[type="text"] {
-  padding: 0.2em 0.5em;
+  font-size: 1.05em;
 }
 .font-L2 {
   /* level 2 font */
   font-size: 0.9em;
 }
+body {
+  .font-base;
+  padding: 0.8em;
+}
+input[type="text"], input[type="button"] {
+  .font-base;
+  .font-L2;
+}
+input[type="text"] {
+  padding: 0.2em 0.5em;
+}
 .expander {
-  /* extents height of container with all children being float */
+  /* extents height of parent container with all children being float */
   content: ".";
   display: block;
   float: none;
@@ -35,7 +40,7 @@ input[type="text"] {
 #page-spell-list,
 #page-spell-img {
   width: 300px;
-  margin-right: 1.5em;
+  margin-right: 1em;
   margin-bottom: 0.8em;
   float: left;
 }
@@ -49,24 +54,12 @@ input[type="text"] {
 .primary-schools-2,
 .elemental-schools {
   width: 100%;
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  box-align: start;
-
-  -webkit-box-pack: justify;
-  -moz-box-pack: justify;
-  box-pack: justify;
+  .box(horizontal, justify, start);
 }
 .primary-schools-1>label,
 .primary-schools-2>label,
 .elemental-schools>label {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
+  .flex(1);
 }
 #type-filters label {
   margin: 0.3em;
@@ -78,44 +71,34 @@ input[type="text"] {
   display: inline-block;
   white-space: nowrap;
 }
-.type-a {
-  background-color: #e89643;
+
+// helper mixin
+.genTypeColorRules (@color, @hover-lighten: 20%) {
+  background-color: @color;
+  &:hover {
+    background-color: lighten(@color, @hover-lighten);
+  };
 }
-.type-a:hover {
-  background-color: #fad8ac;
+.type-a {
+  .genTypeColorRules(#e89643);
 }
 .type-j {
-  background-color: #d0deb0;
-}
-.type-j:hover {
-  background-color: #eaf7ca;
+  .genTypeColorRules(#b0c293);
 }
 .type-c {
-  background-color: #c19357;
-}
-.type-c:hover {
-  background-color: #e6c290;
+  .genTypeColorRules(#c19357);
 }
 .type-e {
-  background-color: #e4d276;
-}
-.type-e:hover {
-  background-color: #fef4a6;
+  .genTypeColorRules(#e4d276);
 }
 .type-q {
-  background-color: #dedacd;
-}
-.type-q:hover {
-  background-color: #fbf6e8;
+  .genTypeColorRules(#82858e);
 }
 .type-i {
-  background-color: #c99db8;
-}
-.type-i:hover {
-  background-color: #f5cae4;
+  .genTypeColorRules(#c99db8);
 }
 #spell-list-holder {
-  /* override ul defaults */
+  /* override <ul> defaults */
   padding-left: 0;
   margin: 0 0;
 
