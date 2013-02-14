@@ -1,5 +1,6 @@
 @import "vendor_prefixes.less";
 
+// common
 @block-padding: 0.8em;
 .font-base {
   font-family: Arial, sans-serif;
@@ -12,13 +13,6 @@
 body {
   .font-base;
 }
-input[type="text"], input[type="button"] {
-  .font-base;
-  .font-L2;
-}
-input[type="text"] {
-  padding: 0.2em 0.5em;
-}
 .expander {
   /* extents height of parent container with all children being float */
   content: ".";
@@ -28,30 +22,25 @@ input[type="text"] {
   clear: both;
   visibility: hidden;
 }
-.badge-icon {
-  width: 2em;
-  height: 2em;
+
+
+/* filter-menu */
+input[type="text"],
+input[type="button"],
+select {
+  .font-base;
+  .font-L2;
 }
-.hidden {
-  /* for hiding filtered spells */
-  display: none;
+input[type="text"] {
+  padding: 0.2em 0.5em;
 }
-[data-role="page"] {
-  width: 300px;
-  margin-right: @block-padding;
-  margin-bottom: @block-padding;
-  float: left;
-}
-#page-mages-info {
-  width: auto;
-}
-#page-filter-menu>fieldset {
+#section-filter-menu>fieldset {
   margin-bottom: @block-padding;
 }
 .primary-schools-1,
 .primary-schools-2,
 .elemental-schools {
-  width: 100%;
+  //width: 100%;
   .box(horizontal, justify, start);
 }
 .primary-schools-1>label,
@@ -95,12 +84,24 @@ input[type="text"] {
 .type-i {
   .genTypeColorRules(#c99db8);
 }
+
+
+/* spell-list */
+.badge-icon {
+  width: 2em;
+  height: 2em;
+}
+.hidden {
+  /* for hiding filtered spells */
+  display: none;
+}
 #spell-list-holder {
   /* override <ul> defaults */
   padding-left: 0;
   margin: 0 0;
 
-  max-height: 500px;
+  height: 100%;
+  max-height: 550px;
   overflow-y: auto;
 }
 #spell-list-holder>li {
@@ -114,4 +115,11 @@ input[type="text"] {
 #spell-list-holder>li>a {
   color: inherit;
   text-decoration: none;
+}
+
+
+/* mages-info */
+#section-mages-info {
+  width: auto;
+  padding: @block-padding;
 }

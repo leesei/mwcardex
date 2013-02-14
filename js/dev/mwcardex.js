@@ -153,7 +153,6 @@ function init() {
 	//typeFilterInit();
 
 	$siholder
-		.hide()  // hide first for fade in
 		.on('load', function() {
 			// fade in on load
 			//console.debug('[%s] loaded', $(this).attr('src'));

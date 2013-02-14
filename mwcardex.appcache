@@ -1,14 +1,16 @@
 CACHE MANIFEST
-# v2.1 - 2012-02-12
+# v3.0 - 2012-02-14
 
 # js
 js/jquery.min.js
 js/mwcardex.min.js
+js/offcanvas.min.js
 js/spell_database.min.js
 js/sprintf-0.7-beta1.min.js
 
 # css
 css/mycss.min.css
+css/offcanvas.min.css
 
 # images
 images/air.png
@@ -210,6 +212,7 @@ spells/mw1w01.jpg
 spells/mw1w02.jpg
 spells/mw1w03.jpg
 spells/mw1w04.jpg
+spells/mwspell.png
 
 # big fallback to network
 NETWORK:
