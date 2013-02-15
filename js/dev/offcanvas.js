@@ -21,8 +21,8 @@ var showMenu = function() {
 // add/remove classes everytime the window resize event fires
 $(window).resize(function() {
 	var off_canvas_nav_display = $('.off-canvas-navigation').css('display');
-	var menu_button_display = $('.menu-button').css('display');
-	console.info(sprintf('resize() nav[%s] menu[%s]', off_canvas_nav_display, menu_button_display));
+	//var menu_button_display = $('.menu-button').css('display');
+	//console.info(sprintf('resize() nav[%s] menu[%s]', off_canvas_nav_display, menu_button_display));
 	if (off_canvas_nav_display === 'block') {
 		$("body").removeClass("three-column").addClass("small-screen");
 	}

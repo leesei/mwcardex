@@ -2,7 +2,7 @@
 
 body {
   // resets body default margin
-  margin: 0px;
+  margin: 0;
 }
 
 .off-canvas-container {
@@ -50,7 +50,6 @@ body {
 }
 
 /* baseline layout (mostly used in single column) */
-
 [role="filter-menu"],
 [role="spell-list"],
 [role="spell-img"] {
@@ -65,7 +64,7 @@ body {
 // but its hard to make active-spell view align to right
 // best I could do is set width of spell-img and align left
 [role="filter-menu"] {
-  min-width: 300px;
+  width: 300px;
   margin-left: -150%;
   float: left;
   z-index: 2;
@@ -85,7 +84,7 @@ body {
   margin-left: 0;
 }
 .active-nav [role="spell-list"] {
-  margin-right: -90%;
+  margin-right: -150%;
 }
 .active-nav [role="spell-img"] {
   margin-right: -150%;
@@ -95,6 +94,8 @@ body {
   margin-left: -150%;
 }
 .active-spell [role="spell-list"] {
+  // so spell list is show left to the spell
+  // but this is unsatisfactory, cannot to right align here
   margin-left: -90%;
 }
 .active-spell [role="spell-img"] {
@@ -107,7 +108,8 @@ body {
 /* two columns layout */
 // filter-menu and spell-list always shown by default
 // reset float and margin-right for spell-img to override the single column value
-@media all and (min-width: 600px) {
+// min-width includes padding and margin
+@media all and (min-width: 620px) {
   .page-title { text-align: left; margin-bottom: -1.1em; font-size: 60px; padding: 1% 0 0 30%;}
   [role="spell-list"] h1 {
     text-align: left;
@@ -146,7 +148,8 @@ body {
 /* three columns layout */
 // all three panels are shown by default
 // reset float and margin-right for spell-img to override the single column value
-@media all and (min-width: 900px) {
+// min-width includes padding and margin
+@media all and (min-width: 930px) {
   @column-padding: 0.5em;
 
   .page-title {text-align: center; font-size: 100px; margin-bottom: -.35em; padding: 0;}
