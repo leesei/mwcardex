@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html manifest="mwcardex.appcache">
+<!doctype html>
+<html manifest="mwcard.appcache">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -41,9 +41,9 @@
 					<input type="button" value="Clear">
 				</fieldset>
 
-				<fieldset disabled>
+				<fieldset>
 					<legend>Tags</legend>
-					<input type="text" id="tag-filter" placeholder="Filter by tags">
+					<input type='hidden' multiple class="select2-container" id="tag-filter" placeholder="Filter by tags">
 					<input type="button" value="Clear">
 				</fieldset>
 
@@ -129,7 +129,7 @@
 				</div>
 				<div class="font-L2" style="padding: 10px;">
 					Mage Wars Cardex by leesei<br>
-					v3.0 20130215
+					v1.4.0 20130224
 				</div>
 			</section>
 
@@ -139,15 +139,14 @@
 				</div>
 				<ul id="spell-list-holder"></ul>
 				<div class="font-L2">
-					<a href="javascript:window.scrollTo(0,0);" style="text-decoration: none;">⇧ Go to top</a>
+					<a href="javascript:window.scrollTo(0,0);" style="text-decoration: none;">Go to top</a>
 				</div>
 			</section>
 
 			<section role="spell-img" id="section-spell-img">
-				<img src="spells/mwspell.png" id="spell-img-holder" width="293px" height="400px">
+				<img src="spells/mwspell.png" name="" id="spell-img-holder" width="293px" height="400px">
+				<div id="spell-desc-holder"></div>
 			</section>
-
-			<div class="expander"></div>
 		</div>
 
 		<section role="mages-info" id="section-mages-info" hidden>
@@ -164,9 +163,14 @@
 		</section>
 	</body>
 
-	<script src="js/spell_database.min.js"></script>
+	<!-- third party libraries -->
+	<link rel="stylesheet" href="select2/select2.min.css"/>
+	<script src="select2/select2.min.js"></script>
 	<script src="js/sprintf-0.7-beta1.min.js"></script>
 
-	<script src="js/offcanvas.min.js"></script>
+	<script src="js/spell_subtypes.min.js"></script>
+	<script src="js/spell_tags.min.js"></script>
+	<script src="js/spell_database.min.js"></script>
 	<script src="js/mwcardex.min.js"></script>
+	<script src="js/offcanvas.min.js"></script>
 </html>

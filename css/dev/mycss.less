@@ -1,6 +1,12 @@
 @import "vendor_prefixes.less";
 
 // common
+/* apply a natural box layout model to all elements */
+//* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+* {
+  .box-sizing(border-box);
+}
+
 @block-padding: 0.8em;
 .font-base {
   font-family: Arial, sans-serif;
@@ -12,6 +18,7 @@
 }
 body {
   .font-base;
+  overflow-y: scroll;
 }
 .expander {
   /* extents height of parent container with all children being float */
@@ -23,20 +30,40 @@ body {
   visibility: hidden;
 }
 
+.hidden {
+  /* for hiding filtered spells */
+  display: none !important;
+  visibility: hidden;
+}
+
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical;
+}
+
 
 /* filter-menu */
 input[type="text"],
-input[type="button"],
-select {
+input[type="button"] {
   .font-base;
   .font-L2;
 }
 input[type="text"] {
   padding: 0.2em 0.5em;
 }
-#section-filter-menu>fieldset {
+fieldset {
   margin-bottom: @block-padding;
 }
+label {
+  cursor: pointer;
+}
+
+/*
+// This flex box thingy is not properly supported by browsers
+// html5please recommended against using it
 .primary-schools-1,
 .primary-schools-2,
 .elemental-schools {
@@ -48,9 +75,10 @@ input[type="text"] {
 .elemental-schools>label {
   .flex(1);
 }
+*/
 #type-filters label {
   margin: 0.3em;
-  margin-right: 0.5em;
+  //margin-right: 0.5em;
   padding: 0.2em;
   padding-right: 0.5em;
   border: solid;
@@ -91,32 +119,30 @@ input[type="text"] {
   width: 2em;
   height: 2em;
 }
-.hidden {
-  /* for hiding filtered spells */
-  display: none;
-}
+
 #spell-list-holder {
   /* override <ul> defaults */
   padding-left: 0;
-  margin: 0 0 @block-padding 0;
 
   height: 100%;
   max-height: 550px;
   overflow-y: auto;
 }
+
 #spell-list-holder>li {
-  padding: 0.3em;
   list-style-type: none;
-  clear: both;
+  list-style-position: outside;
+  padding: 0.3em;
+  //clear: both;
   border-top-style: solid;
   border-width: 0.1em;
   border-color: #ffffff;
 }
+
 #spell-list-holder>li>a {
   color: inherit;
   text-decoration: none;
 }
-
 
 /* mages-info */
 #section-mages-info {
