@@ -106,6 +106,7 @@
 
 	function monitorAppCacheUpdate() {
 		console.group('monitorAppCacheUpdate()');
+		console.debug('monitorAppCacheUpdate()');
 
 		var cacheStatusValues = [], logEvent, cache;
 
@@ -161,8 +162,8 @@
 			.on('change', function() {
 				console.debug('render mage[%s] info', this.value);
 				$('#mage-info-holder').html(
-					'<img src="/mages/'+this.value+'_1.jpg"> '+
-					'<img src="/mages/'+this.value+'_2.jpg">'
+					'<img src="mages/'+this.value+'_1.jpg"> '+
+					'<img src="mages/'+this.value+'_2.jpg">'
 				);
 			});
 
@@ -181,12 +182,12 @@
 			// create badges div for this spell according to its tags
 			$badges = $('<div>').css('float', 'right');
 			for (school in entry.schools) {
-				$badges.append('<img src="/images/'+school+'.png">');
+				$badges.append('<img src="images/'+school+'.png">');
 			}
 			if ($.inArray('melee.', entry.tags) != -1)
-				$badges.append('<img src="/images/melee.png">');
+				$badges.append('<img src="images/melee.png">');
 			if ($.inArray('range.', entry.tags) != -1)
-				$badges.append('<img src="/images/range.png">');
+				$badges.append('<img src="images/range.png">');
 			$badges.children().addClass('badge-icon');
 
 			$spell_entry =
@@ -226,7 +227,7 @@
 			// only reload if the spell already shown is different
 			if ($siholder.attr('name') != this.id)
 			{
-				$siholder.attr('src','/spells/'+this.id+'.jpg');
+				$siholder.attr('src','spells/'+this.id+'.jpg');
 				$siholder.attr('name', this.id);
 			}
 		});
@@ -279,7 +280,8 @@
 		$('#tag-filter')
 			.select2({
 				'multiple': true,
-				'dropdownCss': {'width': '250px'},
+				'containerCss': {'font-size': '0.9em'},
+				'dropdownCss': {'width': '250px', 'font-size': '0.9em'},
 
 				'query': function (query) {
 					var data = {'more': false, 'results': []},
@@ -395,7 +397,7 @@
 
 		// show stock image is spell is up
 		if ($siholder.attr('name') !== '') {
-			$siholder.attr('src', '/spells/mwspell.png');
+			$siholder.attr('src', 'spells/mwspell.png');
 			$siholder.attr('name', '');
 		}
 
